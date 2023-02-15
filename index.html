@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Día de San Valentín</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-right: 2rem;
+        }
+
+        button[type="submit"],
+        button[type="button"] {
+            background-color: red;
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button[type="submit"]:hover,
+        button[type="button"]:hover {
+            background-color: white;
+            color: red;
+            border: 2px solid red;
+        }
+
+        #message {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        select {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+
+        #flowers-form {
+            flex-wrap: wrap;
+        }
+
+        #flowers-button {
+            margin-left: 2rem;
+        }
+
+        #flowers-select-label {
+            text-align: center;
+        }
+
+        label[for="flowers-select"] {
+            display: block;
+            text-align: center;
+        }
+
+
+        img {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>¿Ya recibiste tus flores de San Valentín?</h1>
+    <form id="flowers-form">
+        <label>
+            <input type="radio" name="received-flowers" value="yes"> Sí
+        </label>
+        <label>
+            <input type="radio" name="received-flowers" value="no"> No
+        </label>
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="message"></div>
+    <script>
+        const form = document.getElementById("flowers-form");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const receivedFlowers = document.querySelector(
+                'input[name="received-flowers"]:checked'
+            ).value;
+            if (receivedFlowers === "yes") {
+                document.getElementById("message").innerHTML =
+                    "<p>¡ Felicidades eres una persona afortunada, feliz día de San Valentín !</p>";
+            } else if (receivedFlowers === "no") {
+                const flowersSelectHtml = `
+            <label for="flowers-select">¿Qué flores prefieres?</label>
+            <select id="flowers-select" name="flowers-select">
+              <option value="rosas">Rosas</option>
+              <option value="tulipanes">Tulipanes</option>
+              <option value="girasoles">Girasoles</option>
+            </select>
+            <button id="flowers-button" type="button">Enviar</button>
+          `;
+                document.getElementById("message").innerHTML = flowersSelectHtml;
+                document
+                    .getElementById("flowers-button")
+                    .addEventListener("click", (event) => {
+                        const selectedFlower = document.getElementById("flowers-select").value;
+                        if (selectedFlower === "rosas") {
+                            window.location.href = "rosas.html";
+                        } else if (selectedFlower === "tulipanes") {
+                            window.location.href = "tulipanes.html";
+                        } else if (selectedFlower === "girasoles") {
+                            window.location.href = "girasoles.html";
+                        }
+                    });
+                flowersSelect.style.display = "flex";
+                flowersSelect.style.flexDirection = "column";
+                flowersSelect.style.alignItems = "center";
+                flowersSelect.style.marginTop = "3rem";
+                const flowersButton = document.getElementById("flowers-button");
+                flowersButton.style.background = "white";
+                flowersButton.style.color = "red";
+                flowersButton.style.border = "2px solid red";
+                flowersButton.style.padding = "0.5rem 1rem";
+                flowersButton.style.borderRadius = "5px";
+                flowersButton.style.fontSize = "1.5rem";
+                flowersButton.style.cursor = "pointer";
+                flowersButton.style.transition = "all 0.2s ease";
+                flowersButton.style.marginTop = "1rem";
+                flowersButton.addEventListener("mouseover", () => {
+                    flowersButton.style.background = "red";
+                    flowersButton.style.color = "white";
+                });
+                flowersButton.addEventListener("mouseout", () => {
+                    flowersButton.style.background = "white";
+                    flowersButton.style.color = "red";
+                });
+            }
+        }
+        );
+    </script>
+
+</body>
+
+</html>
